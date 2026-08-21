@@ -31,11 +31,11 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: echo "stdout=$(terraform plan)" >> $GITHUB_OUTPUT
         id: plan
         if: github.event_name == 'push'
         run: terraform plan
         continue-on-error: true
+ 
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
