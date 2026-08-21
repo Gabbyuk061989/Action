@@ -20,7 +20,7 @@ jobs:
         
       
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2.0.2
+        uses: hashicorp/setup-terraform@v3
         
       - name: Terraform Init
         id: init
@@ -31,6 +31,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
+        run: echo "stdout=$(terraform plan)" >> $GITHUB_OUTPUT
         id: plan
         if: github.event_name == 'push'
         run: terraform plan
