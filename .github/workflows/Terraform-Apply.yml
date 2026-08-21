@@ -35,6 +35,7 @@ jobs:
         if: github.event_name == 'push'
         run: terraform plan
         continue-on-error: true
+ 
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
